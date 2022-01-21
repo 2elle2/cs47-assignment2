@@ -15,9 +15,15 @@ import {
   Platform, 
   TouchableOpacity, 
   SafeAreaView } from 'react-native';
+
+import { useState } from 'react';
 import { useFonts } from 'expo-font';
 import { Themes } from './assets/Themes';
-import { Icons } from "./assets/Themes"
+import { Icons } from "./assets/Themes";
+
+import NavBar from "./NavBar"; //don't need { } bc "export default"
+// import BottomButton from "./BottomButton";
+
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -31,23 +37,27 @@ export default function App() {
 
   /* insert your code here */
 
+  // hooks: useState
+  // const [theme, setTheme] = useState({}); //pass in initial value; empty object {}
+  
+  // const [theme, setTheme] = useState(Themes.light);  //pass in light theme
+
+  // const DATA = [ 
+  // { 
+
+  // } ]
+
+  // const renderButton = (bottomIcon) => (
+  //   <BottomButton
+  //     imagePath={bottomIcon.imagePath}
+  //     iconName={bottomIcon.iconName}
+  //   />
+  // ); 
+
   return (
     <View style={styles.container}>
-      <SafeAreaView style={styles.navBar}>
-        <View style={styles.navBarItemsBox}>
-          <TouchableOpacity style={styles.button} onPress={()=>{alert("You clicked Menu!")}}>
-            <Image source={require("./assets/Icons/menu_light.png")} style = {styles.button}/>
-          </TouchableOpacity>
-        </View>
-        <Text style = {styles.logo}>
-            ensom
-        </Text>
-        <View style={styles.navBarItemsBox}>
-          <TouchableOpacity style={styles.button} onPress={()=>{alert("You clicked Menu!")}}>
-            <Image source={require("./assets/Icons/sun.png")} style = {styles.button}/>
-          </TouchableOpacity>
-        </View>
-      </SafeAreaView>
+
+      <NavBar/>
 
       <View style={styles.profile}>
         <View style={styles.profilePic}>
@@ -86,30 +96,35 @@ export default function App() {
         <View style={styles.bottomActionIcon}>
           <TouchableOpacity style = {styles.button} onPress={()=>{alert("You clicked Discover!")}}>
             <Image source={require("./assets/Icons/discover_light.png")} style = {styles.button}/>
-            
+            <Text style={styles.bottomText}>
+              Discover
+            </Text>
           </TouchableOpacity>
-          <Text style={styles.bottomText}>
-            Discover
-          </Text>
+          
         </View>
 
         <View style={styles.bottomActionIcon}>
           <TouchableOpacity style = {styles.button} onPress={()=>{alert("You clicked Matches!")}}>
             <Image source={require("./assets/Icons/heart_light.png")} style = {styles.button}/>
+            <Text style={styles.bottomText}>
+              Matches
+            </Text>
           </TouchableOpacity>
-          <Text style={styles.bottomText}>
-            Matches
-          </Text>
+          
         </View>
+
 
         <View style={styles.bottomActionIcon}>
           <TouchableOpacity style = {styles.button} onPress={()=>{alert("You clicked DMs!")}}>
             <Image source={require("./assets/Icons/messages_light.png")} style = {styles.button}/>
+            <Text style={styles.bottomText}>
+              DMs
+            </Text>
           </TouchableOpacity>
-          <Text style={styles.bottomText}>
-            DMs
-          </Text>
+          
         </View>
+
+        
 
         
       </View>
@@ -117,10 +132,11 @@ export default function App() {
   );
 }
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F4F2F0',
+    backgroundColor: Themes.light.bg, 
     
     ...Platform.select({
       ios: {
@@ -129,44 +145,44 @@ const styles = StyleSheet.create({
     })
   },
 
-  navBar: {
-    flexDirection: "row",
-    justifyContent: 'space-between',
-    paddingRight: "5%",
-    paddingLeft: "5%",
-    // backgroundColor: 'grey', //for testing purposes
-    alignItems: 'center',
-    ...Platform.select({
-      ios: {
-        //the assignment spec mentioned 41px for ios, but it seemed a bit too thin
-        height: 51  
-      },
-      android: {
-        height: 54
-      },
-      default: { //other platforms like web
-        height: 50
-      }
-    })
-  },
+  // navBar: {
+  //   flexDirection: "row",
+  //   justifyContent: 'space-between',
+  //   paddingRight: "5%",
+  //   paddingLeft: "5%",
+  //   // backgroundColor: 'grey', //for testing purposes
+  //   alignItems: 'center',
+  //   ...Platform.select({
+  //     ios: {
+  //       //the assignment spec mentioned 41px for ios, but it seemed a bit too thin
+  //       height: 41  
+  //     },
+  //     android: {
+  //       height: 54
+  //     },
+  //     default: { //other platforms like web
+  //       height: 50
+  //     }
+  //   })
+  // },
 
-  navBarItemsBox: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "flex-end",
-    height: 40,
-    width: 40,
-    // backgroundColor: "red", //for testing purposes
-    margin: '1.5%'
-  },
+  // navBarItemsBox: {
+  //   display: "flex",
+  //   flexDirection: "row",
+  //   alignItems: "flex-end",
+  //   height: 40,
+  //   width: 40,
+  //   // backgroundColor: "red", //for testing purposes
+  //   margin: '1.5%'
+  // },
 
 
-  logo: {
-    fontSize: 32,
-    textAlign: 'center',
-    fontFamily: 'Sydney-Bold',
-    // fontWeight: 'bold',
-  },
+  // logo: {
+  //   fontSize: 32,
+  //   textAlign: 'center',
+  //   fontFamily: 'Sydney-Bold',
+  //   // fontWeight: 'bold',
+  // },
 
   button: {
     height: "100%",
@@ -179,7 +195,7 @@ const styles = StyleSheet.create({
 
   bottom: {
     flex: 1,
-    backgroundColor: "black",
+    backgroundColor: Themes.light.navigation,
     justifyContent: "space-around",
     flexDirection: "row",
     padding: 8,
@@ -189,19 +205,19 @@ const styles = StyleSheet.create({
   bottomActionIcon: {
     height: "50%",
     width: "50%",
-    // backgroundColor: "red",
     marginLeft: 15,
     marginRight: 15,
-    marginTop: "3%",
+    marginTop: "1%",
     alignItems: 'center',
     justifyContent: 'center',
   },
 
 
   bottomText: {
-    fontSize: 16,
+    fontSize: 14,
     fontFamily: 'Sydney',
-    color: "white",
+    color: Themes.light.textSecondary,
+    textAlign: "center",
   },
 
 
@@ -227,12 +243,11 @@ const styles = StyleSheet.create({
     flex: 6,
     marginTop: 15,
     marginBottom: 15,
-    backgroundColor: "blue", //testing purposes
     borderRadius: 8,
-    shadowColor: "#171717",
-    shadowOffset: {width: 2, height: 4},
-    shadowOpacity: 0.4,
-    shadowRadius: 3,
+    shadowColor: Themes.light.shadows.shadowColor,
+    shadowOffset: Themes.light.shadows.shadowOffset,
+    shadowOpacity: Themes.light.shadows.shadowOpacity,
+    shadowRadius: Themes.light.shadows.shadowRadius,
   },
 
   profilePicImg: {
@@ -247,17 +262,18 @@ const styles = StyleSheet.create({
     padding: "5%",
     width: "87%",
     height: "15%",
-    backgroundColor: "white",
+    backgroundColor: Themes.light.bgSecondary,
     borderRadius: 20,
-    shadowColor: "#171717",
-    shadowOffset: {width: 2, height: 4},
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
+    shadowColor: Themes.light.shadows.shadowColor,
+    shadowOffset: Themes.light.shadows.shadowOffset,
+    shadowOpacity: Themes.light.shadows.shadowOpacity,
+    shadowRadius: Themes.light.shadows.shadowRadius,
   },
 
   hotTake: {
     fontFamily: "Sydney",
     fontSize: 28,
+    color: Themes.light.text,
   },
 
   promptIcons: {
@@ -289,7 +305,7 @@ const styles = StyleSheet.create({
     marginLeft: "5%",
     fontSize: 32,
     fontFamily: "Sydney",
-    color: "white",
+    color: Themes.light.textSecondary,
   },
 
   profileDist: {
@@ -299,7 +315,7 @@ const styles = StyleSheet.create({
     marginLeft: "5%",
     fontSize: 18,
     fontFamily: "Sydney",
-    color: "white",
+    color: Themes.light.textSecondary,
   },
 
 });
