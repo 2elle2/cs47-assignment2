@@ -1,3 +1,6 @@
+// Name: Michelle Leung
+// CS 47: Assignment 2
+
 import AppLoading from 'expo-app-loading';
 import { 
   StyleSheet, 
@@ -26,7 +29,7 @@ export default function NavBar() {
           ensom
       </Text>
       <View style={styles.navBarItemsBox}>
-        <TouchableOpacity style={styles.button} onPress={()=>{setTheme(Themes.dark)}}>
+        <TouchableOpacity style={styles.button} onPress={()=>{alert("You clicked Sun!")}}>
           <Image source={require("./assets/Icons/sun.png")} style = {styles.button}/>
         </TouchableOpacity>
       </View>
@@ -44,7 +47,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     ...Platform.select({
       ios: {
-        //the assignment spec mentioned 41px for ios, but it seemed a bit too thin
         height: 41  
       },
       android: {
@@ -55,6 +57,7 @@ const styles = StyleSheet.create({
       }
     })
   },
+
 
   navBarItemsBox: {
     display: "flex",

@@ -1,4 +1,6 @@
 import { palette } from './palette';
+import React from 'react';
+
 export default Themes = {
   light: {
     bg: palette.lightGray,
@@ -29,3 +31,5 @@ export default Themes = {
     },
   },
 };
+
+
