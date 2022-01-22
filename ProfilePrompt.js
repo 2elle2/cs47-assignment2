@@ -6,12 +6,16 @@ import {
   Text,
   View,
   Image,
-  TouchableOpacity } from 'react-native';
+  TouchableOpacity,
+  Dimensions } from 'react-native';
 
 import React from 'react';
 import { Themes } from './assets/Themes';
 import { Icons } from "./assets/Themes";
 
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 
 export default function ProfilePrompt() {
@@ -43,8 +47,8 @@ const styles = StyleSheet.create({
   profilePrompt: {
     flex: 2,
     padding: "5%",
-    width: "87%",
-    height: "15%",
+    width: windowWidth * 0.85,
+    height: windowHeight * 0.15,
     backgroundColor: Themes.light.bgSecondary,
     borderRadius: 20,
     shadowColor: Themes.light.shadows.shadowColor,

@@ -9,15 +9,18 @@ import {
   Text,
   View,
   Image,
-  TouchableOpacity } from 'react-native';
+  TouchableOpacity,
+  Dimensions } from 'react-native';
 
 import React from 'react';
 import { Themes } from './assets/Themes';
 import { Icons } from "./assets/Themes";
 
-
-
 import SwipeCards from 'react-native-swipe-cards';
+
+const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
+
 
 class Card extends React.Component {
   constructor(props) {
@@ -130,8 +133,8 @@ const styles = StyleSheet.create({
     borderColor: Themes.light.shadowColor,
   },
   thumbnail: {
-    width: 320,
-    height: 352,
+    width: windowWidth * 0.8,
+    height: windowHeight * 0.45,
     borderRadius: 10,
   },
   profileName: {

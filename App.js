@@ -7,6 +7,9 @@
 // And used SwipeCards code from this GitHub page linked in the Assignment 2 spec:
 // https://github.com/meteor-factory/react-native-tinder-swipe-cards
 
+// Note: I tried to implement changing themes functionality (between light/dark)
+// but was unable to figure out how to do it; any advice on that would be helpful :)
+
 
 import AppLoading from 'expo-app-loading';
 import { 
@@ -44,27 +47,12 @@ export default function App() {
   StatusBar.setBarStyle(Themes.light.statusBar);
   /* ^Don't mind/edit this one either unless you decide to do the dark theme one, in that case, you will have to change it accordingly*/
 
-  /* insert your code here */
-
-  {/*
-
+  {/*  My attempts at having a changed theme functionality:
   // hooks: useState
   // const [theme, setTheme] = useState({}); //pass in initial value; empty object {}
-  
   // const [theme, setTheme] = useState(Themes.light);  //pass in light theme
-
   // const themeData = { theme, setTheme };
-
-
-  // const renderButton = (bottomIcon) => (
-  //   <BottomButton
-  //     imagePath={bottomIcon.imagePath}
-  //     iconName={bottomIcon.iconName}
-  //   />
-  // ); 
-
-
-*/}
+  */}
 
   return (
     <ThemeContextProvider>
@@ -106,7 +94,7 @@ const styles = StyleSheet.create({
     flex: 2,
   },
   profile: {
-    flex: 8,
+    flex: 10,
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
