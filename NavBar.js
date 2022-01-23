@@ -15,9 +15,12 @@ import { useFonts } from 'expo-font';
 import { Themes } from './assets/Themes';
 import { Icons } from "./assets/Themes";
 
-
+import { withTheme } from './assets/Themes/themeProvider';
 
 export default function NavBar() {
+
+  // const [currTheme, setCurrTheme] = useState(Themes.light); 
+
   return (
     <SafeAreaView style={styles.navBar}>
       <View style={styles.navBarItemsBox}>
@@ -29,7 +32,7 @@ export default function NavBar() {
           ensom
       </Text>
       <View style={styles.navBarItemsBox}>
-        <TouchableOpacity style={styles.button} onPress={()=>{alert("You clicked Sun!")}}>
+        <TouchableOpacity style={styles.button} onPress={()=>{alert("You clicked Sun!")}} >  
           <Image source={require("./assets/Icons/sun.png")} style = {styles.button}/>
         </TouchableOpacity>
       </View>
@@ -43,7 +46,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingRight: "5%",
     paddingLeft: "5%",
-    // backgroundColor: 'grey', //for testing purposes
+    // backgroundColor: "grey", //for testing purposes
     alignItems: 'center',
     ...Platform.select({
       ios: {

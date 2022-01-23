@@ -21,6 +21,8 @@ import SwipeCards from 'react-native-swipe-cards';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
+import NavBar from "./NavBar";
+
 
 class Card extends React.Component {
   constructor(props) {
@@ -130,7 +132,7 @@ const styles = StyleSheet.create({
 
   card: {
     overflow: 'hidden',
-    borderColor: Themes.light.shadowColor,
+    borderColor: currTheme.shadowColor,
   },
   thumbnail: {
     width: windowWidth * 0.8,

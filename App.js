@@ -38,6 +38,9 @@ import BottomBar from "./BottomBar";
 
 
 export default function App() {
+
+  // const [dark, setDark] = useState(false);
+
   let [fontsLoaded] = useFonts({
     Sydney: require('./assets/Fonts/Sydney-Serial-Regular.ttf'),
     'Sydney-Bold': require('./assets/Fonts/Sydney-Serial-Bold.ttf'),
@@ -46,13 +49,6 @@ export default function App() {
   /* ^Don't mind/edit the code above, it's there to load the font for you! */
   StatusBar.setBarStyle(Themes.light.statusBar);
   /* ^Don't mind/edit this one either unless you decide to do the dark theme one, in that case, you will have to change it accordingly*/
-
-  {/*  My attempts at having a changed theme functionality:
-  // hooks: useState
-  // const [theme, setTheme] = useState({}); //pass in initial value; empty object {}
-  // const [theme, setTheme] = useState(Themes.light);  //pass in light theme
-  // const themeData = { theme, setTheme };
-  */}
 
   return (
     <ThemeContextProvider>
