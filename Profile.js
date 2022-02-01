@@ -132,7 +132,6 @@ const styles = StyleSheet.create({
 
   card: {
     overflow: 'hidden',
-    borderColor: currTheme.shadowColor,
   },
   thumbnail: {
     width: windowWidth * 0.8,
